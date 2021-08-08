@@ -121,3 +121,33 @@
     </v-col>
   </v-row>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      audio: null
+    };
+  },
+  mounted() {
+    this.audio = new Audio();
+
+    window.addEventListener("click", this.setUpAudio);
+
+    setInterval(() => {
+      this.audio.play();
+    }, 10000);
+  },
+  beforeDestroy() {
+    window.removeEventListener("click", this.setUpAudio);
+  },
+  methods: {
+    setUpAudio() {
+      this.audio.play();
+      this.audio.src = "https://dotot.vn/sounds/timer.mp3";
+
+      window.removeEventListener("click", this.setUpAudio);
+    }
+  }
+};
+</script>
