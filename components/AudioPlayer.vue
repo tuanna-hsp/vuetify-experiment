@@ -21,8 +21,12 @@ export default {
   mounted() {
     this.audio = new Audio("https://dotot.vn/sounds/empty.mp3");
 
-    window.addEventListener("click", this.readyAudio);
-    window.addEventListener("touchstart", this.readyAudio);
+    if (this.$device.isIos) {
+      window.addEventListener("click", this.readyAudio);
+      window.addEventListener("touchstart", this.readyAudio);
+    } else {
+      this.isReady = true;
+    }
   },
 
   beforeDestroy() {
