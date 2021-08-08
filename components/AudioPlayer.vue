@@ -22,6 +22,7 @@ export default {
     this.audio = new Audio("https://dotot.vn/sounds/empty.mp3");
 
     window.addEventListener("click", this.readyAudio);
+    window.addEventListener("touchstart", this.readyAudio);
   },
 
   beforeDestroy() {
@@ -32,6 +33,7 @@ export default {
   methods: {
     removeListeners() {
       window.removeEventListener("click", this.readyAudio);
+      window.removeEventListener("touchstart", this.readyAudio);
     },
 
     readyAudio() {
